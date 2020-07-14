@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/', function () {
     return view('welcome');
 });
@@ -38,3 +38,5 @@ Route::group(['middleware'=>['User'],'prefix'=>'/user'], function(){
     Route::get('/deleteBook', 'UserController@deleteBook')->name('deleteBook');
     Route::get('/expireBook', 'UserController@expireBook');
 });
+
+Route::get('apiTest', 'HomeController@test');

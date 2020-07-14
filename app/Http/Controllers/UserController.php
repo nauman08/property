@@ -5,13 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Inventory;
 use App\Customer;
+use App\userService;
+use App\Service;
 use Auth;
 
 class UserController extends Controller
 {
     public function index(){
-        return view('dashboard');
+        $services = array(); 
+        $a = userService::where('user_id',Auth::user()->id)->get();
+        foreach($a as $singleService)
+        {
+            $val=Service::where('id',$singleService['service_id'])->first();
+            $services[] = $val['service_name'];
+        }
+       
+         return view('dashboard')->with('service',$services);
     }
+
 
     public function assignedBooks(){
         $books = Customer::where('user_id',Auth::user()->id)->get();

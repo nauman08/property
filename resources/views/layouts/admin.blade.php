@@ -130,7 +130,7 @@ price{
     <!-- NAVBAR -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="brand">
-          <a href="/" target="_blank"><b style="font-size: 20px; margin-left:-25px;">Library Management</b></a>
+          <a href="/" target="_blank"><b style="font-size: 20px; margin-left:-25px;">Property Management</b></a>
       </div>
         <div class="container-fluid">
             <div id="navbar-menu">
@@ -156,14 +156,21 @@ price{
         <div class="sidebar-scroll">
             <nav>
                   <ul class="nav">
-                      @if(Auth::user()->role == 1)
+                    @foreach($service as $service)
+                          <li><a href="" class="#"><i class="">&#10004;</i> <span>{{$service}}</span></a></li>
+                    @endforeach
+
+
+                      <!-- @if(Auth::user()->role == 1)
                         <li><a href="/admin/books" class="#"><i class="">&#10004;</i> <span>Manage Books</span></a></li>
                         <li><a href="/admin/bookRequest" class="#"><i class="">&#10004;</i> <span>Borrow Requests</span></a></li>
                         <li><a href="/admin/bookExpired" class="#"><i class="">&#10004;</i> <span>Expire Requests</span></a></li>
+                        <li><a href="/apiTest" class="#"><i class="">&#10004;</i> <span>Api Test</span></a></li>   
                       @else
                         <li><a href="/user/books" class="#"><i class="">&#10004;</i> <span>Manage Books</span></a></li>
                         <li><a href="/user/expireBook" class="#"><i class="">&#10004;</i> <span>Books Expire</span></a></li>
-                      @endif
+                        <li><a href="/apiTest" class="#"><i class="">&#10004;</i> <span>Api Test</span></a></li>                     
+                      @endif -->
                   </ul>
             </nav>
         </div>
